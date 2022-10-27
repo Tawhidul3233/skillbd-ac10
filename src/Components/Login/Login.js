@@ -1,33 +1,67 @@
-import React from 'react';
+import React, { useContext, useState } from 'react';
 import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
 import ButtonGroup from 'react-bootstrap/ButtonGroup';
 import { FaGoogle, FaGithub, FaFacebook, FaTwitter, FaTwitch, FaWhatsapp } from 'react-icons/fa';
+import { Link, useNavigate } from 'react-router-dom';
+import { AuthContext } from '../../Contexts/AuthProvider';
 
 
 const Login = () => {
+
+     const [success, setSuccess] = useState()
+
+     const { loginUserWithEmail } = useContext(AuthContext)
+     const nevigate = useNavigate()
+
+     const singClickHandler = (event) => {
+          event.preventDefault();
+
+          const form = event.target;
+          const email = form.email.value
+          const password = form.password.value
+
+          loginUserWithEmail(email, password)
+               .then(result => {
+                    const user = result.user;
+                    console.log(user)
+                    setSuccess('Login successfuly')
+                    nevigate('/')
+               })
+               .catch(error => {
+                    console.error(error)
+                    setSuccess('Something wrong')
+               })
+
+     }
+
+
      return (
           <div className='w-50 mx-auto mt-5'>
-               <Form>
+               <Form onSubmit={singClickHandler}>
                     <Form.Group className="mb-3" controlId="formBasicEmail">
                          <Form.Label>Email address</Form.Label>
-                         <Form.Control type="email" placeholder="Enter email" />
+                         <Form.Control name="email" type="email" placeholder="Enter email" />
                     </Form.Group>
 
                     <Form.Group className="mb-3" controlId="formBasicPassword">
                          <Form.Label>Password</Form.Label>
-                         <Form.Control type="password" placeholder="Password" />
+                         <Form.Control name="password" type="password" placeholder="Password" />
                     </Form.Group>
-                    <Form.Text className="text-muted">
-                         We'll never share your email with anyone else.
-                    </Form.Text>
-                    <Form.Group className="mb-3" controlId="formBasicCheckbox">
-                         <Form.Check type="checkbox" label="Check me out" />
-                    </Form.Group>
+                    <div className='mb-2 '>
+                         <Form.Text className="text-muted">
+                              {success}
+                         </Form.Text>
 
+                    </div>
                     <Button variant="primary" type="submit">
                          Login
                     </Button>
+                    <div>
+                         <Form.Text className="text-muted">
+                              If you don't have account <Link to='/register'> Please Register </Link>
+                         </Form.Text>
+                    </div>
                     <div className='mt-4'>
                          <ButtonGroup vertical>
                               <Button className='mb-2 px-5' variant="outline-primary" >

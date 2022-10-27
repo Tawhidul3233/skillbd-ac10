@@ -1,12 +1,25 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import Container from 'react-bootstrap/Container';
 import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
 import Card from 'react-bootstrap/Card';
 import { Link, NavLink } from 'react-router-dom';
+import { Button } from 'react-bootstrap';
+import { AuthContext } from '../../Contexts/AuthProvider';
 
 
 const NavBar = () => {
+
+     
+
+     const { user, logOut } = useContext(AuthContext);
+
+     const logOutHandler = () => {
+          logOut()
+               .then(() => { })
+               .catch(error => console.error(error))
+     }
+
      return (
           <div>
                <Navbar collapseOnSelect expand="lg" bg="dark" variant="dark">
@@ -23,8 +36,17 @@ const NavBar = () => {
                                    <Nav.Link href="contact">Contact</Nav.Link>
                               </Nav>
                               <Nav>
-                                   <Nav.Link title='Create Account' href="/register">Register</Nav.Link>
-                                   <Nav.Link title='Login' href="/login">Login</Nav.Link>
+                                   {user?.uid ?
+                                        <>
+                                             <Button onClick={logOutHandler}  className='ms-2' variant="outline-info">LogOut</Button>{' '}
+                                        </> :
+                                        <>
+                                             <Nav.Link title='Create Account' href="/register">Register</Nav.Link>
+                                             <Nav.Link title='Login' href="/login">Login</Nav.Link>
+                                        </>
+
+                                   }
+
                                    <Nav.Link title='Make Dark' href="#deets">Switch Dark</Nav.Link>
                               </Nav>
                          </Navbar.Collapse>
@@ -35,3 +57,4 @@ const NavBar = () => {
 };
 
 export default NavBar;
+
