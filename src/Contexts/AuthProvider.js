@@ -23,6 +23,10 @@ const AuthProvider = ({children}) => {
           return signInWithPopup(auth, provider)
      }
 
+     const githubSingIn = (provider) =>{
+          return signInWithPopup(auth, provider)
+     }
+
      const logOut = () => {
           return signOut(auth);
      }
@@ -37,7 +41,7 @@ const AuthProvider = ({children}) => {
      }, [])
 
 
-     const AuthInfo = { user, googleSingIn , newUserCreateEmail, loginUserWithEmail, logOut }
+     const AuthInfo = { user, githubSingIn, googleSingIn , newUserCreateEmail, loginUserWithEmail, logOut }
 
      return (
           <div>

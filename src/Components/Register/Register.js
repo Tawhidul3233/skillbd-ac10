@@ -5,7 +5,7 @@ import { FaGoogle, FaGithub, FaFacebook, FaTwitter, FaTwitch, FaWhatsapp } from 
 import ButtonGroup from 'react-bootstrap/ButtonGroup';
 import { Link, useNavigate } from 'react-router-dom';
 import { AuthContext } from '../../Contexts/AuthProvider';
-import { GoogleAuthProvider } from 'firebase/auth';
+import { GithubAuthProvider, GoogleAuthProvider } from 'firebase/auth';
 
 
 
@@ -14,9 +14,10 @@ const Register = () => {
      const [success, setSuccess] = useState()
 
 
-     const { newUserCreateEmail, googleSingIn } = useContext(AuthContext)
+     const { newUserCreateEmail, googleSingIn, githubSingIn } = useContext(AuthContext)
      const nevigate = useNavigate()
      const googleProvider = new  GoogleAuthProvider();
+     const githubProvider = new GithubAuthProvider();
 
      const onSubmitClickHandler = (event) => {
           event.preventDefault();
@@ -50,6 +51,17 @@ const Register = () => {
           })
           .catch(error => console.error(error))
           
+     }
+
+
+     const singInGithub = ()=>{
+          githubSingIn(githubProvider)
+          .then(result =>{
+               const user = result.user;
+               console.log(user)
+               nevigate('/')
+          })
+          .catch(error => console.error(error))
      }
 
      return (
@@ -90,7 +102,7 @@ const Register = () => {
                          <ButtonGroup vertical>
                               <Button onClick={singInGoogle} className='mb-2 px-5' variant="outline-primary" >
                                    <FaGoogle /> Continue with Google</Button>
-                              <Button variant="outline-dark">
+                              <Button onClick={singInGithub} variant="outline-dark">
                                    <FaGithub /> Continue with Github</Button>
                          </ButtonGroup>
                     </div>
