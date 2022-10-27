@@ -12,10 +12,10 @@ const Courses = () => {
           <div className='mt-4'>
                <Container>
                     <Row>
-                         <Col lg='3' className=''>
+                         <Col lg='2' className=''>
                               <Category> </Category>
                          </Col>
-                         <Col lg='9'  >
+                         <Col lg='10'  >
                               <h3> All Courses {courses.length} </h3>
                               <div className=' d-flex flex-wrap justify-content-center' >
                                    {

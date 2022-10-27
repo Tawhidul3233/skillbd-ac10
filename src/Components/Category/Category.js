@@ -9,7 +9,7 @@ const Category = () => {
                <ButtonGroup vertical className='d-flex lg:d-block'>
                     <Button className='mt-3 '> Freelancing skill </Button>
                     <Button className='mt-3 '> Learning English </Button>
-                    <Button className='mt-3 '> Professional Courses</Button>
+                    <Button className='mt-3 '> Professional skill</Button>
                     <Button className='mt-3 '> Admission Test </Button>
                </ButtonGroup>
           </div>
