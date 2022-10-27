@@ -6,6 +6,7 @@ import { FaGoogle, FaGithub } from 'react-icons/fa';
 import { Link, useNavigate } from 'react-router-dom';
 import { AuthContext } from '../../Contexts/AuthProvider';
 import { GithubAuthProvider, GoogleAuthProvider } from 'firebase/auth';
+import toast, { Toaster } from 'react-hot-toast';
 
 
 const Login = () => {
@@ -35,6 +36,7 @@ const Login = () => {
                .catch(error => {
                     console.error(error)
                     setSuccess('Something wrong')
+                    toast.error('Something wrong chack email or password')
                })
 
      }
