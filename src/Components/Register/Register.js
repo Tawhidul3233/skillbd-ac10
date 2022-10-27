@@ -1,7 +1,7 @@
 import React, { useContext, useState } from 'react';
 import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
-import { FaGoogle, FaGithub, FaFacebook, FaTwitter, FaTwitch, FaWhatsapp } from 'react-icons/fa';
+import { FaGoogle, FaGithub } from 'react-icons/fa';
 import ButtonGroup from 'react-bootstrap/ButtonGroup';
 import { Link, useNavigate } from 'react-router-dom';
 import { AuthContext } from '../../Contexts/AuthProvider';
@@ -14,7 +14,8 @@ const Register = () => {
      const [success, setSuccess] = useState()
 
 
-     const { newUserCreateEmail, googleSingIn, githubSingIn } = useContext(AuthContext)
+     const { newUserCreateEmail, googleSingIn, githubSingIn , updateUserProfile} = useContext(AuthContext)
+
      const nevigate = useNavigate()
      const googleProvider = new  GoogleAuthProvider();
      const githubProvider = new GithubAuthProvider();
@@ -26,6 +27,7 @@ const Register = () => {
           const email = form.email.value
           const password = form.password.value
           const photoURL = form.photoURL.value
+          const name = form.name.value
 
           console.log(email, password)
 
@@ -35,6 +37,9 @@ const Register = () => {
                     console.log(user)
                     setSuccess('Register successfull')
                     nevigate('/')
+                    updateUserProfile({ displayName: name, photoURL: photoURL })
+                         .then(() => { })
+                         .catch(error => console.error(error));
                })
                .catch(error => {
                     console.error(error)

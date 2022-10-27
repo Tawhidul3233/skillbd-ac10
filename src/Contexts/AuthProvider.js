@@ -1,5 +1,5 @@
 import React, { createContext, useEffect, useState } from 'react';
-import {createUserWithEmailAndPassword, getAuth, onAuthStateChanged, signInWithEmailAndPassword, signInWithPopup, signOut} from "firebase/auth"
+import {createUserWithEmailAndPassword, getAuth, onAuthStateChanged, signInWithEmailAndPassword, signInWithPopup, signOut, updateProfile} from "firebase/auth"
 import app from '../FireBace/FireBace.config';
 
 
@@ -27,6 +27,10 @@ const AuthProvider = ({children}) => {
           return signInWithPopup(auth, provider)
      }
 
+     const updateUserProfile = (profile) => {
+          return updateProfile(auth.currentUser, profile)
+     }
+
      const logOut = () => {
           return signOut(auth);
      }
@@ -41,7 +45,7 @@ const AuthProvider = ({children}) => {
      }, [])
 
 
-     const AuthInfo = { user, githubSingIn, googleSingIn , newUserCreateEmail, loginUserWithEmail, logOut }
+     const AuthInfo = { user, updateUserProfile, githubSingIn, googleSingIn , newUserCreateEmail, loginUserWithEmail, logOut }
 
      return (
           <div>

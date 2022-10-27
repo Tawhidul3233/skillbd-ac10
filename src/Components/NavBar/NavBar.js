@@ -4,13 +4,14 @@ import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
 import Card from 'react-bootstrap/Card';
 import { Link, NavLink } from 'react-router-dom';
-import { Button } from 'react-bootstrap';
+import { Button, Image } from 'react-bootstrap';
 import { AuthContext } from '../../Contexts/AuthProvider';
+import { FaUser} from 'react-icons/fa';
 
 
 const NavBar = () => {
 
-     
+
 
      const { user, logOut } = useContext(AuthContext);
 
@@ -35,6 +36,17 @@ const NavBar = () => {
                                    <Nav.Link href="/about">About</Nav.Link>
                                    <Nav.Link href="contact">Contact</Nav.Link>
                               </Nav>
+                              <Link >
+                                        {user?.uid ?
+                                             <>
+                                                  <Image style={{ height: '40px', width:'40px' }} src={user?.photoURL}>
+                                                  </Image>
+                                             </>
+                                             : <>
+                                                  <FaUser> </FaUser>
+                                             </>
+                                        }
+                                   </Link>
                               <Nav>
                                    {user?.uid ?
                                         <>

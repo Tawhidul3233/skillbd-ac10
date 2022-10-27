@@ -2,17 +2,21 @@ import React, { useContext, useState } from 'react';
 import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
 import ButtonGroup from 'react-bootstrap/ButtonGroup';
-import { FaGoogle, FaGithub, FaFacebook, FaTwitter, FaTwitch, FaWhatsapp } from 'react-icons/fa';
+import { FaGoogle, FaGithub } from 'react-icons/fa';
 import { Link, useNavigate } from 'react-router-dom';
 import { AuthContext } from '../../Contexts/AuthProvider';
+import { GithubAuthProvider, GoogleAuthProvider } from 'firebase/auth';
 
 
 const Login = () => {
 
      const [success, setSuccess] = useState()
 
-     const { loginUserWithEmail } = useContext(AuthContext)
+     const { loginUserWithEmail,googleSingIn,githubSingIn } = useContext(AuthContext)
      const nevigate = useNavigate()
+     const googleProvider = new  GoogleAuthProvider();
+     const githubProvider = new GithubAuthProvider();
+
 
      const singClickHandler = (event) => {
           event.preventDefault();
@@ -33,6 +37,28 @@ const Login = () => {
                     setSuccess('Something wrong')
                })
 
+     }
+
+     const singInGoogle = ()=>{
+          googleSingIn(googleProvider)
+          .then(result =>{
+               const user = result.user;
+               console.log(user)
+               nevigate('/')
+          })
+          .catch(error => console.error(error))
+          
+     }
+
+
+     const singInGithub = ()=>{
+          githubSingIn(githubProvider)
+          .then(result =>{
+               const user = result.user;
+               console.log(user)
+               nevigate('/')
+          })
+          .catch(error => console.error(error))
      }
 
 
@@ -64,9 +90,9 @@ const Login = () => {
                     </div>
                     <div className='mt-4'>
                          <ButtonGroup vertical>
-                              <Button className='mb-2 px-5' variant="outline-primary" >
+                              <Button onClick={singInGoogle} className='mb-2 px-5' variant="outline-primary" >
                                    <FaGoogle /> Sing in with Google</Button>
-                              <Button variant="outline-dark">
+                              <Button onClick={singInGithub} variant="outline-dark">
                                    <FaGithub /> Sing in with Github</Button>
                          </ButtonGroup>
                     </div>
