@@ -23,8 +23,8 @@ const NavBar = () => {
                                    <Nav.Link href="contact">Contact</Nav.Link>
                               </Nav>
                               <Nav>
-                                   <Nav.Link title='Create Account' href="#dee">Register</Nav.Link>
-                                   <Nav.Link title='Login' href="#dets">Login</Nav.Link>
+                                   <Nav.Link title='Create Account' href="/register">Register</Nav.Link>
+                                   <Nav.Link title='Login' href="/login">Login</Nav.Link>
                                    <Nav.Link title='Make Dark' href="#deets">Switch Dark</Nav.Link>
                               </Nav>
                          </Navbar.Collapse>

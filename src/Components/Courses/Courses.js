@@ -16,7 +16,7 @@ const Courses = () => {
                               <Category> </Category>
                          </Col>
                          <Col lg='10'  >
-                              <h3> All Courses {courses.length} </h3>
+                              <h5> All Courses {courses.length} </h5>
                               <div className=' d-flex flex-wrap justify-content-center' >
                                    {
                                         courses.map(course => <Course key={course.id} course={course}> </Course>)
