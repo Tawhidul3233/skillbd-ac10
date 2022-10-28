@@ -65,7 +65,7 @@ const Login = () => {
 
 
      return (
-          <div className='w-50 mx-auto mt-5'>
+          <div className='  bg-warning p-5 w-50 mx-auto mt-5'>
                <Form onSubmit={singClickHandler}>
                     <Form.Group className="mb-3" controlId="formBasicEmail">
                          <Form.Label>Email address</Form.Label>

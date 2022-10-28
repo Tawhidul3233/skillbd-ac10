@@ -39,7 +39,7 @@ const NavBar = () => {
                               <Link >
                                         {user?.uid ?
                                              <>
-                                                  <Image className='cursol pointer' title={user?.displayName} style={{ height: '40px', width:'40px' }} src={user?.photoURL}>
+                                                  <Image className='' title={user?.displayName} style={{ height: '40px', width:'40px' }} src={user?.photoURL}>
                                                   </Image>
                                              </>
                                              : <>

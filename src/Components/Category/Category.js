@@ -14,7 +14,7 @@ const Category = () => {
                          <Col lg='2' className=''>
                               <Categories> </Categories>
                          </Col>
-                         <Col lg='10' className=' d-flex flex-wrap md:justify-content-center ' >
+                         <Col lg='10' className=' d-flex flex-wrap justify-content-center'>
                               {
                                    categories.map(course => <Course key={course.id} course={course}> </Course>)
                               }

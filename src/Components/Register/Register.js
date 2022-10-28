@@ -70,7 +70,7 @@ const Register = () => {
      }
 
      return (
-          <div className='w-50 mx-auto my-5'>
+          <div className= ' bg-warning p-5 w-50 mx-auto my-5'>
                <Form onSubmit={onSubmitClickHandler}>
                     <Form.Group className="mb-3" controlId="formBasicEmail">
                          <Form.Label>Your name</Form.Label>

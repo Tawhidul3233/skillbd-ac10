@@ -1,8 +1,6 @@
 import React from 'react';
 import Button from 'react-bootstrap/Button';
 import Card from 'react-bootstrap/Card';
-import Col from 'react-bootstrap/Col';
-import Row from 'react-bootstrap/Row';
 import { BsFillPeopleFill, BsStar } from "react-icons/bs";
 import { Link } from 'react-router-dom';
 
@@ -15,7 +13,7 @@ const Course = ({ course }) => {
                <Card style={{ width: '18rem' }}>
                     <Card.Img variant="top" src={thumbnail_url} />
                     <Card.Body className=''>
-                         <Card.Title >{title}</Card.Title>
+                         <Card.Title className='text-center'>{title}</Card.Title>
                          <div className='d-flex justify-content-around align-items-center my-2'>
                               <Card.Img className='rounded' style={{ height: '30px', width: '30px' }} variant="top" src={Instructor?.img} />
                               <Card.Text className='m-0'> {Instructor?.name} </Card.Text>
