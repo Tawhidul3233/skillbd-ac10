@@ -23,7 +23,7 @@ const NavBar = () => {
 
      return (
           <div>
-               <Navbar collapseOnSelect expand="lg" bg="dark" variant="dark">
+               <Navbar  collapseOnSelect expand="lg" bg="dark" variant="dark">
                     <Container>
                          <Card.Img style={{ height: '30px', width: '30px', marginRight: '10px' }} variant="top" src="./logo.jfif" />
                          <Navbar.Brand className=' me-5' href="/">Skillbd</Navbar.Brand>
@@ -39,7 +39,7 @@ const NavBar = () => {
                               <Link >
                                         {user?.uid ?
                                              <>
-                                                  <Image style={{ height: '40px', width:'40px' }} src={user?.photoURL}>
+                                                  <Image className='cursol pointer' title={user?.displayName} style={{ height: '40px', width:'40px' }} src={user?.photoURL}>
                                                   </Image>
                                              </>
                                              : <>

@@ -74,7 +74,7 @@ const Register = () => {
                <Form onSubmit={onSubmitClickHandler}>
                     <Form.Group className="mb-3" controlId="formBasicEmail">
                          <Form.Label>Your name</Form.Label>
-                         <Form.Control type="text" placeholder="Your name" />
+                         <Form.Control name="name" type="text" placeholder="Your name" />
                     </Form.Group>
                     <Form.Group className="mb-3" controlId="formBasicEmail">
                          <Form.Label>Email address</Form.Label>

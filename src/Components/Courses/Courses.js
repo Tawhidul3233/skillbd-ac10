@@ -1,7 +1,7 @@
 import React from 'react';
 import { Col, Container, Row } from 'react-bootstrap';
 import { useLoaderData } from 'react-router-dom';
-import Category from '../Category/Category';
+import Category from '../Categories/Categories';
 import Course from '../Course/Course';
 
 const Courses = () => {
