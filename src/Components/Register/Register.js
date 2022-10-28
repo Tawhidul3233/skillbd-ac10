@@ -6,6 +6,7 @@ import ButtonGroup from 'react-bootstrap/ButtonGroup';
 import { Link, useNavigate } from 'react-router-dom';
 import { AuthContext } from '../../Contexts/AuthProvider';
 import { GithubAuthProvider, GoogleAuthProvider } from 'firebase/auth';
+import toast, { Toaster } from 'react-hot-toast';
 
 
 
@@ -34,8 +35,9 @@ const Register = () => {
           newUserCreateEmail(email, password)
                .then(result => {
                     const user = result.user;
-                    console.log(user)
+                    form.reset()
                     setSuccess('Register successfull')
+                    toast.success('Register successfully')
                     nevigate('/')
                     updateUserProfile({ displayName: name, photoURL: photoURL })
                          .then(() => { })

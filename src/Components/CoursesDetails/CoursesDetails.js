@@ -1,13 +1,13 @@
 import React from 'react';
 import { Button, Col, Container, Row } from 'react-bootstrap';
-import { useLoaderData } from 'react-router-dom';
+import { Link, useLoaderData } from 'react-router-dom';
 import Card from 'react-bootstrap/Card';
 import { BsStar, BsFillPersonBadgeFil, BsHouseFill, BsPersonFill } from "react-icons/bs";
 
 const CoursesDetails = ({ }) => {
      const courseDetails = useLoaderData()
-     const { title, Instructor, rating, thumbnail_url, details, price, student } = courseDetails;
-     console.log(details)
+     const { id, title, Instructor, rating, thumbnail_url, details, price, student } = courseDetails;
+     
      return (
           <div >
                <Container>
@@ -55,7 +55,7 @@ const CoursesDetails = ({ }) => {
                                         <p> <BsPersonFill> </BsPersonFill> Language : Banglish</p>
                                    </div>
                                    <div >
-                                        <Button href='/courses' variant="primary"> Enroll Now </Button>{' '}
+                                        <Button  variant="primary"> <Link to={`/checkout/${id}`}> Enroll Now  </Link></Button>{' '}
                                    </div>
                               </div>
                          </Col>

@@ -3,7 +3,7 @@ import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
 import ButtonGroup from 'react-bootstrap/ButtonGroup';
 import { FaGoogle, FaGithub } from 'react-icons/fa';
-import { Link, useNavigate } from 'react-router-dom';
+import { Link, Navigate, useLocation, useNavigate } from 'react-router-dom';
 import { AuthContext } from '../../Contexts/AuthProvider';
 import { GithubAuthProvider, GoogleAuthProvider } from 'firebase/auth';
 import toast, { Toaster } from 'react-hot-toast';
@@ -13,10 +13,14 @@ const Login = () => {
 
      const [success, setSuccess] = useState()
 
-     const { loginUserWithEmail,googleSingIn,githubSingIn } = useContext(AuthContext)
-     const nevigate = useNavigate()
+     const { loginUserWithEmail,googleSingIn,githubSingIn , setLoading} = useContext(AuthContext)
+     const navigate = useNavigate()
      const googleProvider = new  GoogleAuthProvider();
      const githubProvider = new GithubAuthProvider();
+
+     const loaction = useLocation()
+     const from = loaction.state?.from?.pathName || '/'
+
 
 
      const singClickHandler = (event) => {
@@ -29,14 +33,18 @@ const Login = () => {
           loginUserWithEmail(email, password)
                .then(result => {
                     const user = result.user;
-                    console.log(user)
+                    form.reset()
                     setSuccess('Login successfuly')
-                    nevigate('/')
+                    toast.success('Login successfully')
+                    navigate(from, {replace:true})
                })
                .catch(error => {
                     console.error(error)
                     setSuccess('Something wrong')
                     toast.error('Something wrong chack email or password')
+               })
+               .finally(()=>{
+                    setLoading(false)
                })
 
      }
@@ -46,7 +54,7 @@ const Login = () => {
           .then(result =>{
                const user = result.user;
                console.log(user)
-               nevigate('/')
+               navigate(from, {replace:true})
           })
           .catch(error => console.error(error))
           
@@ -58,7 +66,7 @@ const Login = () => {
           .then(result =>{
                const user = result.user;
                console.log(user)
-               nevigate('/')
+               navigate(from, {replace:true})
           })
           .catch(error => console.error(error))
      }
