@@ -1,6 +1,16 @@
 
 
+# Website name : skillbd 
+# Live link : https://skillbd-c7e83.web.app/
 
+step by step explanation :
+1. install react app and react router
+2. create a server using express js 
+3. using react-boostrap for site design
+4. using firebace for Authenticate
+5. using react-icon
+6. deploy server on vercel 
+7. deploy clint site on firebace
 
 # Getting Started with Create React App
 
