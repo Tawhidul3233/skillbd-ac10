@@ -35,6 +35,7 @@ const Register = () => {
           newUserCreateEmail(email, password)
                .then(result => {
                     const user = result.user;
+                    console.log(user)
                     form.reset()
                     setSuccess('Register successfull')
                     toast.success('Register successfully')
@@ -45,6 +46,7 @@ const Register = () => {
                })
                .catch(error => {
                     console.error(error)
+                    toast.error('Something wrong chack email or password')
                })
 
      }

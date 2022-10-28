@@ -11,7 +11,7 @@ const PrivateRouter = ({children}) => {
           return <Spinner animation="border" variant="primary" />
      }
      if(!user){
-          return <Navigate to='/login' state={{from: location}} replace > </Navigate>
+          return <Navigate to='/login' state={{form: location}} replace > </Navigate>
      }
      return children;
 };

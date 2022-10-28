@@ -55,7 +55,7 @@ const CoursesDetails = ({ }) => {
                                         <p> <BsPersonFill> </BsPersonFill> Language : Banglish</p>
                                    </div>
                                    <div >
-                                        <Button  variant="primary"> <Link to={`/checkout/${id}`}> Enroll Now  </Link></Button>{' '}
+                                        <Button href={`/checkout/${id}`}  variant="primary">  Enroll Now  </Button>{' '}
                                    </div>
                               </div>
                          </Col>

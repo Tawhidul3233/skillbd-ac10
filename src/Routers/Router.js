@@ -27,7 +27,7 @@ export const routes = createBrowserRouter([
                     path: '/courses',
                     element: <Courses> </Courses>,
                     loader: () => {
-                         return fetch('http://localhost:5000')
+                         return fetch('https://skillbd-server.vercel.app')
                     }
                },
                {
@@ -38,21 +38,21 @@ export const routes = createBrowserRouter([
                     path: '/courses/:id',
                     element: <CoursesDetails> </CoursesDetails>,
                     loader: ({ params }) => {
-                         return fetch(`http://localhost:5000/courses/${params.id}`)
+                         return fetch(`https://skillbd-server.vercel.app/courses/${params.id}`)
                     }
                },
                {
                     path: '/checkout/:id',
                     element: <PrivateRouter> <CheckOut> </CheckOut> </PrivateRouter>,
                     loader: ({ params }) => {
-                         return fetch(`http://localhost:5000/checkout/${params.id}`)
+                         return fetch(`https://skillbd-server.vercel.app/checkout/${params.id}`)
                     }
                },
                {
                     path: '/categories/:id',
                     element: <Category> </Category>,
                     loader: ({ params }) => {
-                         return fetch(`http://localhost:5000/categories/${params.id}`)
+                         return fetch(`https://skillbd-server.vercel.app/categories/${params.id}`)
                     }
                },
                {

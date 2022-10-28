@@ -14,12 +14,13 @@ const Login = () => {
      const [success, setSuccess] = useState()
 
      const { loginUserWithEmail,googleSingIn,githubSingIn , setLoading} = useContext(AuthContext)
-     const navigate = useNavigate()
+     
      const googleProvider = new  GoogleAuthProvider();
      const githubProvider = new GithubAuthProvider();
 
-     const loaction = useLocation()
-     const from = loaction.state?.from?.pathName || '/'
+     const navigate = useNavigate()
+     const location = useLocation()
+     const from = location.state?.form?.pathName || '/courses'
 
 
 
@@ -33,9 +34,11 @@ const Login = () => {
           loginUserWithEmail(email, password)
                .then(result => {
                     const user = result.user;
-                    form.reset()
+                    form.reset(user)
+                    console.log()
                     setSuccess('Login successfuly')
                     toast.success('Login successfully')
+                    setLoading(true)
                     navigate(from, {replace:true})
                })
                .catch(error => {
